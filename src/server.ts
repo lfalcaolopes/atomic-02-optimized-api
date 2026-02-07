@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import { checkDatabaseConnection } from './config/database'
 import { env } from './config/env'
 import { routes } from './routes'
 import { errorHandler } from './middlewares/error'
@@ -14,6 +15,16 @@ app.use(requestTimeLog)
 app.use(routes)
 app.use(errorHandler)
 
-app.listen(env.PORT, () => {
-  console.log(`API running on http://localhost:${env.PORT}`)
+const startServer = async () => {
+  await checkDatabaseConnection()
+  console.log('PostgreSQL connection established')
+
+  app.listen(env.PORT, () => {
+    console.log(`API running on http://localhost:${env.PORT}`)
+  })
+}
+
+startServer().catch((error) => {
+  console.error('Failed to start server:', error)
+  process.exit(1)
 })

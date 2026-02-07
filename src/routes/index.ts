@@ -1,9 +1,15 @@
 import { Router } from 'express'
+import { db } from '../config/database'
 
 export const routes = Router()
 
-routes.get('/health', (_req, res) => {
-  res.json({ ok: true, ts: Date.now() })
+routes.get('/health', async (_req, res) => {
+  try {
+    await db.query('SELECT 1')
+    res.json({ ok: true, db: 'up', ts: Date.now() })
+  } catch {
+    res.status(503).json({ ok: false, db: 'down', ts: Date.now() })
+  }
 })
 
 routes.get('/error', (_req, _res) => {
