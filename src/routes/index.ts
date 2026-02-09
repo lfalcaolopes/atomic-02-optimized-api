@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { db } from '../config/database'
+import { pool } from '../config/database'
 
 export const routes = Router()
 
 routes.get('/health', async (_req, res) => {
   try {
-    await db.query('SELECT 1')
+    await pool.query('SELECT 1')
     res.json({ ok: true, db: 'up', ts: Date.now() })
   } catch {
     res.status(503).json({ ok: false, db: 'down', ts: Date.now() })
