@@ -12,10 +12,10 @@ Keep new code in `src/` and group by concern (`routes`, `middlewares`, `config`)
 
 ## Build, Test, and Development Commands
 - `npm install`: install dependencies.
+[You can't install dependencies, if anything needs to be downloaded return the command]
 - `npm run dev`: run local server with `tsx` watch mode (`src/server.ts`).
-- `npm run build`: compile TypeScript to `dist/`.
-- `npm start`: run compiled server from `dist/server.js`.
-- `npm run lint`: run ESLint checks.
+- `npm.cmd run build`: compile TypeScript to `dist/`.
+- `npm.cmd run lint`: run ESLint checks.
 - `npm run lint:fix`: auto-fix lint issues where possible.
 - `npm run format`: format files with Prettier.
 

@@ -1,7 +1,12 @@
 import { Router } from 'express'
 import { pool } from '../config/database'
+import { paginationRoutes } from './pagination'
+import { userRoutes } from './users'
 
 export const routes = Router()
+
+routes.use('/pagination', paginationRoutes)
+routes.use('/users', userRoutes)
 
 routes.get('/health', async (_req, res) => {
   try {
