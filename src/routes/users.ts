@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { db } from '../config/database'
 import { usersTable } from '../db/schema'
 import { validateBody } from '../middlewares/validateBody'
-import { createUserBodySchema, updateUserBodySchema } from './users.schema'
+import { createUserBodySchema, updateUserBodySchema } from '../schemas/users'
 import { eq } from 'drizzle-orm'
 
 export const userRoutes = Router()
