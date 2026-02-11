@@ -3,12 +3,16 @@ import { pool } from '../config/database'
 import { paginationRoutes } from './pagination'
 import { userRoutes } from './users'
 import { filteringRoutes } from './filtering'
+import { filteringReferenceRoutes } from './filtering.reference'
+import { paginationOptimizedReferenceRoutes } from './pagination.optimized.reference'
 
 export const routes = Router()
 
 routes.use('/pagination', paginationRoutes)
+routes.use('/pagination-reference', paginationOptimizedReferenceRoutes)
 routes.use('/users', userRoutes)
 routes.use('/filtering', filteringRoutes)
+routes.use('/filtering-reference', filteringReferenceRoutes)
 
 routes.get('/health', async (_req, res) => {
   try {
